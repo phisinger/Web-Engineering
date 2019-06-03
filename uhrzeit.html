@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <style type="text/css">
+            div { font-family: Calibri, Helvetica, sans-serif; 
+                text-align: center; 
+                font-size: 400%;
+                margin: 10% 10% 10% 10%;
+
+            }
+            h1 {
+                vertical-align: middle;
+                position: relative;
+
+            }    
+        </style>
+        
+        <script language="javascript">
+            function checkNull(zahl) {
+                if (zahl < 10) {
+                    zahl = "0" + zahl;
+                }
+                return zahl;
+            }
+
+            function updateZeit() {
+                var Zeit = new Date();
+                aktSek = Zeit.getSeconds();
+                aktSek = checkNull(aktSek);
+                aktMin = Zeit.getMinutes();
+                aktMin = checkNull(aktMin);
+                aktStu = Zeit.getHours();
+                aktStu = checkNull(aktStu);
+
+
+                var refstr = document.createTextNode(aktStu + ":"  + aktMin + ":" + aktSek);
+                var old = document.getElementById("zwei");
+                old.replaceChild(refstr, old.firstChild);
+                window.setTimeout("updateZeit()", 100);
+            }       
+        
+    
+    </script>
+    </head>
+    <body onLoad="updateZeit();">
+        <div id="1"><h1 id="zwei">dummy</h1></div>
+
+        
+
+    </body>
+</html>

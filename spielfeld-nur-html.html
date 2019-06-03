@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Spielfeld, dynamisch erzeugt</title>
+        <style>
+            td {background-color: antiquewhite; 
+                width: 50px; 
+                height: 50px;
+                font-size: 15px;
+                font-family: Arial;
+                text-align: center;};
+        </style>
+        <script language="javascript">
+            function klicken(zelle){
+                alert("geklickt: Zelle " + zelle.id);
+            }
+
+            function Spielfeld(){
+                tabelle = document.createElement("table");
+                var zeichen = "abcdefg";
+
+                for(var i = 6; i > 0; i--){
+                    zeile = document.createElement("tr");
+                    for(var a = 0; a <= 7; a++){
+                        zelle = document.createElement("td");
+                        
+                        zellenid = document.createAttribute("id");
+                        zellenid.nodeValue = zeichen.charAt(a) + i;
+                        zelle.setAttributeNode(zellenid);
+
+                        zelle.addEventListener("click", function(){klicken(this);})
+                        
+                        text = document.createTextNode(zeichen.charAt(a) + i);
+                        zelle.appendChild(text);
+                        zeile.appendChild(zelle);
+                    }
+                    tabelle.appendChild(zeile);
+                }
+                ebene = document.getElementById("ziel");
+                ebene.appendChild(tabelle);
+            }
+        </script>
+    </head>
+    <body onload="Spielfeld()";>
+        <h1>Spielfeld dynamisch erzeugt</h1>
+        <div id="ziel"></div>
+    </body>
+</html>
