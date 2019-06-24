@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script language="javascript">
+
+
+
+function getData( ) {
+	var refZiel = document.getElementById( "ziel" );
+
+	xRequest = new XMLHttpRequest();
+
+	inhalt = xRequest.open("GET", "datei.txt", false);
+	xRequest.send();
+	if (xRequest.responseText){
+		refZiel.innerHTML = xRequest.responseText;
+	}
+}
+	
+	
+</script>
+
+
+<title>Hallo asynchroner XMLRequest</title>
+</head>
+<body>
+<h1>AJAX</h1>
+<h1>Hallo XMLRequest - asynchron</h1>
+<A HREF="#" onclick="getData(); return false;">Klick mich !!</A>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<div id="ziel" style="border: solid 5px red;">
+Zielebene
+</div>
+</body>
+</html>
